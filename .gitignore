@@ -1,0 +1,9 @@
+node_modules/
+*.mdb
+*.ldb
+*.sln
+*.config
+Debug/
+Release/
+obj/
+*.zip
