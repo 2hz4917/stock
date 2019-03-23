@@ -9,21 +9,22 @@ import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 import { log, colors } from 'gulp-util';
-import args from 'util/args';
+import args from './util/args';
 
-gulp.task('script', () => {
+//js文件的监听 打包
+gulp.task('scripts', () => {
     return gulp.src(['app/js/index.js'])
         .pipe(plumber({
-            errorHandler: function() {
+            errorHandle: function() {
 
             }
         }))
         .pipe(named())
         .pipe(gulpWebpack({
             module: {
-                loaders: [{
+                rules: [{ //同下
                     test: /\.js$/,
-                    loader: 'babel'
+                    loader: 'babel-loader' //webpack版本问题
                 }]
             }
         }), null, (err, stats) => {
@@ -34,7 +35,7 @@ gulp.task('script', () => {
         .pipe(gulp.dest('server/public/js'))
         .pipe(rename({
             basename: 'cp',
-            extname: '.mn.js'
+            extname: '.min.js'
         }))
         .pipe(uglify({ compress: { properties: false }, output: { 'quote_keys': true } }))
         .pipe(gulp.dest('server/public/js'))
