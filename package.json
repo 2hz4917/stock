@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/register": "^7.4.0",
     "babel-loader": "^8.0.5",
+    "babel-polyfill": "^6.26.0",
     "connect-livereload": "^0.6.1",
     "del": "^4.0.0",
     "gulp": "^3.9.1",
